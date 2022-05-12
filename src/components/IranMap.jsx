@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import iranProvinces from "../data/iranProvinces";
-import iranBorder, { caspianD, persianGulfD } from "../data/IranMapData";
 import styles from "./IranMap.module.css";
 
 const useMouse = () => {
@@ -10,7 +9,7 @@ const useMouse = () => {
     function handle(e) {
       setMousePosition({
         x: e.pageX,
-        y: e.pageY,
+        y: e.pageY
       });
     }
     const mapEffect = document.querySelector("svg");
@@ -101,9 +100,6 @@ const IranMap = () => {
             enableBackground="new 20 0 970 960"
             xmlSpace="preserve"
           >
-            <g className={styles.border}>
-              <path className={styles.iran} d={iranBorder} />
-            </g>
             <g className={styles.province}>
               {provinces.map((province) => (
                 <path
@@ -120,15 +116,7 @@ const IranMap = () => {
                 />
               ))}
             </g>
-            <g className={styles.sea}>
-              <path className={styles.caspian} d={caspianD} />
-              <path
-                className={styles.persian_gulf}
-                onMouseOver={() => setProvinceName("جزایر خلیج فارس")}
-                onMouseLeave={() => setProvinceName("")}
-                d={persianGulfD}
-              />
-            </g>
+
             <g className={styles.lake}>
               <path
                 className={styles.jazmourian}
